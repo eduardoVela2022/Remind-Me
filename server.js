@@ -45,7 +45,25 @@ app.post("/api/notes", (req, res) => {
   // Saves the modified note array in the database
   fs.writeFileSync(DATABASE_PATH, JSON.stringify(databaseData));
 
+  // JSON success response is sent
   res.json("Note was saved successfully");
+});
+
+// API PATH to delete a note of a user
+app.delete("/api/notes/:id", (req, res) => {
+  // The note array from the database is obtained
+  const databaseData = JSON.parse(fs.readFileSync(DATABASE_PATH));
+
+  // Filters the id of the note to delete, to remove it from the array
+  const modifiedDatabaseData = databaseData.filter(
+    (note) => note.id !== req.params.id
+  );
+
+  // Saves the modified note array in the database
+  fs.writeFileSync(DATABASE_PATH, JSON.stringify(modifiedDatabaseData));
+
+  // JSON success response is sent
+  res.json("Note was deleted successfully");
 });
 
 // Server init

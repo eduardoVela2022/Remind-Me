@@ -65,7 +65,7 @@ const renderActiveNote = () => {
   hide(clearBtn);
 
   // Displays the selected note
-  if (activeNote.id) {
+  if (activeNote?.id) {
     show(newNoteBtn);
     noteTitle.setAttribute("readonly", true);
     noteText.setAttribute("readonly", true);
