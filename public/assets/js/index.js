@@ -65,7 +65,7 @@ const renderActiveNote = () => {
   hide(clearBtn);
 
   // Displays the selected note
-  if (activeNote.id) {
+  if (activeNote?.id) {
     show(newNoteBtn);
     noteTitle.setAttribute("readonly", true);
     noteText.setAttribute("readonly", true);
@@ -86,6 +86,7 @@ const renderActiveNote = () => {
 const handleNoteSave = () => {
   // New note object is created
   const newNote = {
+    id: crypto.randomUUID(),
     title: noteTitle.value,
     text: noteText.value,
   };
