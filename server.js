@@ -3,8 +3,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 
-// Database
-const database = require("./db/db.json");
+const DATABASE_PATH = "./db/db.json";
 
 // The port the server will be using
 const PORT = 3001;
@@ -32,15 +31,21 @@ app.get("/notes", (req, res) => {
 
 // API PATH to get the notes of a user
 app.get("/api/notes", (req, res) => {
-  res.json(database);
+  res.json(JSON.parse(fs.readFileSync(DATABASE_PATH)));
 });
 
 // API PATH to save a note of a user
 app.post("/api/notes", (req, res) => {
-  // Saves notes to the database
-  fs.write("./db/db.json", JSON.stringify(req.body), (err) => {
-    if (err) console.log(err);
-  });
+  // The note array from the database is obtained
+  const databaseData = JSON.parse(fs.readFileSync(DATABASE_PATH));
+
+  // New note is added to the note array
+  databaseData.push(req.body);
+
+  // Saves the modified note array in the database
+  fs.writeFileSync(DATABASE_PATH, JSON.stringify(databaseData));
+
+  res.json("Note was saved successfully");
 });
 
 // Server init

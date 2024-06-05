@@ -86,7 +86,7 @@ const renderActiveNote = () => {
 const handleNoteSave = () => {
   // New note object is created
   const newNote = {
-    id: crypto.randomUUID,
+    id: crypto.randomUUID(),
     title: noteTitle.value,
     text: noteText.value,
   };
