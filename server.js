@@ -6,7 +6,7 @@ const fs = require("fs");
 const DATABASE_PATH = "./db/db.json";
 
 // The port the server will be using
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Initializing the express app
 const app = express();
