@@ -18,7 +18,7 @@ No installation is required, you just need to visit the website, by clicking on 
 ## Usage
 
 1. To start using Web Notes you first need to go to its website, by clicking on the following link:
-   After you click on the link, you should see website’s homepage.
+   After you click on the link, you should see the website’s homepage.
    !["The homepage of Web Notes"](./public/assets/images/Homepage.png)
 
 2. Then click on the “Get Started” button, to go to a webpage where you can visualize, create and delete all your notes. The button should redirect you to the following webpage, when you click on it.
